@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import application.controller.AddPopUpController;
 import application.controller.MainController;
 import application.controller.fullArrayController;
 import application.controller.popUpController;
@@ -17,8 +19,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Model {
@@ -26,7 +29,7 @@ public class Model {
 	public static ArrayList<LocalDate> gameDays = new ArrayList<LocalDate>();
 
 	//what executes on mouse clicking a date
-	public EventHandler<? super MouseEvent> setDate( LocalDate date ) {
+	public EventHandler<? super MouseEvent> setDate( LocalDate date , AnchorPaneNode apn) {
 		
 		Alert a = new Alert(AlertType.NONE);
 		// if the array list is full see if they want to delete a game with a pop up
@@ -47,20 +50,14 @@ public class Model {
 				e1.printStackTrace();
 			}
 			// if they choose cancel it just returns
-			if( fullArrayController.decesion == true ) {
+			if( fullArrayController.decision == true ) {
 				
 				return null;
 				
 			}
 			// if they choose delete it finds the first objcet that matches and deletes it
 			else {
-				
-				for(int i = 0; i < gameDays.size(); ++i) {
-					if( date == gameDays.get(i) ) {
-						gameDays.remove(i);
-						break;
-					}
-				}
+				gameDays.remove(gameDays.indexOf(date));
 				return null;
 			}
 			
@@ -111,7 +108,12 @@ public class Model {
 		}
 		// if its a new date it adds it
 		else {
-			gameDays.add(date);
+			if(!makeAddPopup(date)){
+				gameDays.add(date);
+				Label l = new Label(AddPopUpController.timeEntered);
+				l.setPrefSize(50, 50);
+				apn.getChildren().add(l);
+			}
 		}
 		// sorts the games 
 		Collections.sort(gameDays);
@@ -127,6 +129,26 @@ public class Model {
 	 * 
 	 * 
 	 * ****************************************************/
+	
+	/*	makeAddPopup
+	 * 	makes the pop-up associated with adding a new date to your schedule. returns true if the user completes
+	 * 	the operation to add a date. False if they cancel.
+	 */
+	private boolean makeAddPopup(LocalDate date){
+		Stage popup = new Stage();
+		try{
+			Pane root = (Pane)FXMLLoader.load(getClass().getResource("/application/view/addPopUp.fxml"));
+			Scene scene = new Scene(root);
+			popup.setResizable(false);
+			popup.setTitle("Add "+date+"?");
+			popup.setScene(scene);
+			popup.showAndWait();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return AddPopUpController.isCanceled;
+	}
 	public void teamSearch(String team) throws IOException {
 		File schedule = new File(team+".txt");
 		schedule.createNewFile();

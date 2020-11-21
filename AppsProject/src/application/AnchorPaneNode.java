@@ -1,5 +1,6 @@
 package application;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import application.Model;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 public class AnchorPaneNode extends AnchorPane {
 	
 	Model mod = new Model();
+	Label gameTime;
 
     // Date associated with this pane
     private LocalDate date;
@@ -24,8 +26,7 @@ public class AnchorPaneNode extends AnchorPane {
         super(children);
         // Add action handler for mouse clicked
         this.setOnMouseClicked(e -> {
-        	
-        	mod.setDate(date);
+        	mod.setDate(date, this);
         });
     }
 

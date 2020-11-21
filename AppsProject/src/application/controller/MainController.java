@@ -49,10 +49,10 @@ public class MainController {
 			return;   
 	    }
 		calendarPane = FXMLLoader.load(getClass().getResource("/application/view/fullCalendar.fxml"));
-		Scene scene = new Scene(calendarPane);
+		//Scene scene = new Scene(calendarPane);
 		Scene scene1 = (new Scene(new FullCalendarView(YearMonth.now()).getView()));
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+	//	window.setScene(scene);
 		window.setScene(scene1);
 		window.show();
 		

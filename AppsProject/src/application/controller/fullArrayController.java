@@ -11,13 +11,13 @@ public class fullArrayController {
 	@FXML
 	private Button delete;
 	
-	public static boolean decesion;
+	public static boolean decision;
 	//  if they click cancel it just goes back to calender
 	@FXML
 	public void cancelButton(ActionEvent event) {
 		Stage stage = (Stage) cancel.getScene().getWindow();
 		
-		decesion = true;
+		decision = true;
 		stage.close();   
 	}
 	// if they click the delete it deletes the first occurrence in the array 
@@ -25,7 +25,7 @@ public class fullArrayController {
 	public void deleteButton(ActionEvent event) {
 		Stage stage = (Stage) delete.getScene().getWindow();
 		
-		decesion = false;
+		decision = false;
 		stage.close();   
 	}
 }
