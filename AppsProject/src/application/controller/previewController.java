@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.time.YearMonth;
 import java.util.ResourceBundle;
@@ -34,6 +35,9 @@ public class previewController implements Initializable{
 	private Button back;
 	
 	@FXML
+	private Button newTeam;
+	
+	@FXML
 	public Pane calendarPane;
 	
 	@FXML
@@ -46,7 +50,7 @@ public class previewController implements Initializable{
 	// this will run as soon as the submit button is pressed and sets the text area to the games
 	@Override
 	public void initialize(URL location, ResourceBundle resources){
-		
+		text += "Team: " + MainController.team + "\n";
 		for(int i = 0; i < Model.gameDays.size(); ++i) {
 			// adds the array from the model class with a static call to be used here in this string
 			text += "Game " + (i + 1) + ": " + Model.gameDays.get(i).toString() + "\n";
@@ -59,37 +63,23 @@ public class previewController implements Initializable{
 	// the calendar is made
 	@FXML
 	public void finishButton(ActionEvent event) {
-		
+		Stage oldStage = (Stage) finish.getScene().getWindow();
+		oldStage.close();
 		try {
 			File file = new File("schedule.txt");
-			if(file.createNewFile()) {
-				// makes the writer
-				FileWriter writer = new FileWriter(file);
+			file.createNewFile();
+			// makes the writer
+			FileWriter writer = new FileWriter(file, true );
 				/* writes the class string to the file in this format
 				 * Game 1: 11-20-2020 
 				 * Game 2: 11-21-2020
 				 * */
-				writer.write(text);
+			writer.write(text);
 				
-				writer.close();
-			}
-			else {
-				// makes the writer
-				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-				/* writes the class string to the file in this format
-				 * Game 1: 11-20-2020 
-				 * Game 2: 11-21-2020
-				 * */
-				writer.write(text);
-				
-				writer.close();
-			}
-			
-			
-		} catch (IOException e) {
+			writer.close();	
+		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	// this will call the calendar back to edit games
 	@FXML
@@ -104,6 +94,34 @@ public class previewController implements Initializable{
 			window.setScene(scene1);
 			window.show();
 		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void newButton(ActionEvent event) {
+		Stage oldStage = (Stage) newTeam.getScene().getWindow();
+		oldStage.close();
+		Model.gameDays.clear();
+		try {
+		    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("schedule.txt", true)));
+		    out.println(text);
+		    out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		text = "";
+		try {
+    		
+    		Stage stage = new Stage();
+			Pane root = (Pane)FXMLLoader.load(getClass().getResource("/application/view/Main.fxml"));
+			Scene scene = new Scene(root,430,350);
+			scene.getStylesheets().add(getClass().getResource("/application/view/application.css").toExternalForm());
+			stage.setResizable(false);
+			stage.setTitle("Sports Star Scheduling");
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

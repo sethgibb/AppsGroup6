@@ -111,6 +111,7 @@ public class FullCalendarView {
             ap.setTopAnchor(txt, 5.0);
             ap.setLeftAnchor(txt, 5.0);
             ap.getChildren().add(txt);
+            Model.makeLabelsForNode(ap);
             calendarDate = calendarDate.plusDays(1);
         }
         // Change the title of the calendar

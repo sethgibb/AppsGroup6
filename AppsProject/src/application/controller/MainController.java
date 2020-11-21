@@ -27,7 +27,7 @@ public class MainController {
 	@FXML
 	private TextField gameNumber;
 	
-	String team;
+	public static String team;
 	public static String games;
 	
 	@FXML

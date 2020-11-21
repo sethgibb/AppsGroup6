@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import application.controller.AddPopUpController;
 import application.controller.MainController;
@@ -27,6 +28,7 @@ import javafx.stage.Stage;
 public class Model {
 	// with it public it can be accessed anywhere with an import
 	public static ArrayList<LocalDate> gameDays = new ArrayList<LocalDate>();
+	public static HashMap<LocalDate, ArrayList<String>> gameTimes = new HashMap<LocalDate, ArrayList<String>>();
 
 	//what executes on mouse clicking a date
 	public EventHandler<? super MouseEvent> setDate( LocalDate date , AnchorPaneNode apn) {
@@ -58,6 +60,8 @@ public class Model {
 			// if they choose delete it finds the first objcet that matches and deletes it
 			else {
 				gameDays.remove(gameDays.indexOf(date));
+				//TODO: prompt the user for days that have multiple games to choose which time to remove.
+				gameTimes.get(date).remove(0);
 				return null;
 			}
 			
@@ -90,26 +94,32 @@ public class Model {
 			}
 			// if they press add it adds the game
 			if( popUpController.option == true ) {
-				
-				gameDays.add(date);
+				//room for cleanup here (kinda )
+				if(!makeAddPopup(date)){
+					gameDays.add(date);
+					//TODO: make a way so multiple labels don't overlap
+					gameTimes.get(date).add(AddPopUpController.timeEntered);
+					Label l = new Label(AddPopUpController.timeEntered);
+					l.setPrefSize(50, 50);
+					apn.getChildren().add(l);
+				}
 				
 			}
 			// if its delete finds the first and deletes the match
 			else {
-				System.out.print(date.toString());
-				for(int i = 0; i < gameDays.size(); ++i) {
-					
-					if( date == gameDays.get(i) ) {
-						gameDays.remove(i);
-						break;
-					}
-				}
+				gameDays.remove(gameDays.indexOf(date));
+				//TODO: prompt the user for days that have multiple games to choose which time to remove.
+				gameTimes.get(date).remove(0);
+				return null;
 			}
 		}
 		// if its a new date it adds it
 		else {
 			if(!makeAddPopup(date)){
 				gameDays.add(date);
+				ArrayList<String> tempList = new ArrayList<String>(3);
+				tempList.add(AddPopUpController.timeEntered);
+				gameTimes.put(date, tempList);
 				Label l = new Label(AddPopUpController.timeEntered);
 				l.setPrefSize(50, 50);
 				apn.getChildren().add(l);
@@ -117,6 +127,7 @@ public class Model {
 		}
 		// sorts the games 
 		Collections.sort(gameDays);
+		Collections.sort(gameTimes.get(date));
 		// we will delete this later
 		System.out.println(gameDays.toString());
 	
@@ -213,5 +224,15 @@ public class Model {
 		return gameDays;
 	}
 	
+	public static void makeLabelsForNode(AnchorPaneNode apn){
+		if(gameTimes.get(apn.getDate()) != null){
+			//TODO: make a way so multiple labels don't overlap
+			for(String time: gameTimes.get(apn.getDate())){
+				Label l = new Label(time);
+				l.setPrefSize(50, 50);
+				apn.getChildren().add(l);
+			}
+		}
+	}
 
 }
