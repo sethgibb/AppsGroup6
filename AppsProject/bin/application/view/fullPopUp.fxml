@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="205.0" prefWidth="353.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.controller.fullArrayController">
+   <children>
+      <TextArea editable="false" layoutX="77.0" layoutY="14.0" prefHeight="92.0" prefWidth="200.0" text="Click Cancel to cancel or click Delete to Delete a game on this date." wrapText="true" />
+      <Button fx:id="delete" cancelButton="true" layoutX="77.0" layoutY="136.0" mnemonicParsing="false" onAction="#deleteButton" text="Delete" />     
+      <Button fx:id="cancel" cancelButton="true" layoutX="212.0" layoutY="136.0" mnemonicParsing="false" onAction="#cancelButton" text="Cancel" />
+   </children>
+</AnchorPane>
