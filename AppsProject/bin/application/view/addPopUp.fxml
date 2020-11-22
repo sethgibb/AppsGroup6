@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="250.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AddPopUpController">
+   <children>
+      <TextField fx:id="textField" layoutX="76.0" layoutY="120.0" promptText="0:00 AM/PM" />
+      <Button fx:id="addButton" layoutX="50.0" layoutY="180.0" mnemonicParsing="false" onAction="#addPressed" prefWidth="55.0" text="Add" />
+      <Button fx:id="cancelButton" layoutX="190.0" layoutY="180.0" mnemonicParsing="false" onAction="#cancelPressed" prefWidth="55.0" text="Cancel" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="27.0" prefHeight="75.0" prefWidth="220.0" text="Enter a start time for your game and&#10;press add. If you do not wish to add&#10;this date, press the cancel button." />
+   </children>
+</AnchorPane>
