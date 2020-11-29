@@ -4,7 +4,7 @@ Project Name: Sports Schedules Made Easy
 Team Name: Kids Next Door
 Members: Dillon Dakil, Jarod Thibodaux, Seth Gibson, Joshua Romero
 Description: An inenteractive program to create/edit sport team schedules
-Bugs: closing pops with full games deletes a random game
+Bugs: closing pops with full games deletes a random game, deleting an earlier game on a day with two or more games make the view of the time jumbled.
 Login Page: not really a login but 
 example: Team name:       Stars
          number of games: 12
