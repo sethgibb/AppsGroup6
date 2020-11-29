@@ -1,0 +1,38 @@
+Team: testers
+Game 1: 2020-11-16
+Game 2: 2020-11-16
+Game 3: 2020-11-17
+Team: tfrtfgrtfgre
+Game 1: 2020-11-02
+Game 2: 2020-11-16
+Team: rerfe
+Game 1: 2020-11-01
+Game 2: 2020-11-16
+Game 3: 2020-11-16
+
+Team: 32e
+Game 1: 2020-11-16
+Game 2: 2020-11-16
+Game 3: 2020-11-17
+
+Team: hhh
+Game 1: 2020-12-02
+
+Team: 32
+Game 1: 2020-11-18
+
+Team: tgrh
+Game 1: 2020-11-26
+
+Team: asd
+Game 1: 2020-11-10
+Game 2: 2020-11-10
+Game 3: 2020-11-19
+
+
+Team: F
+Game 1: 2020-11-09, Game time: 2
+Game 2: 2020-11-10, Game time: 2
+Game 3: 2020-11-10, Game time: 3
+Game 4: 2020-11-10, Game time: 3
+
