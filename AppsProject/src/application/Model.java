@@ -109,7 +109,6 @@ public class Model {
 				//room for cleanup here (kinda )
 				if(!makeAddPopup(date)){
 					gameDays.add(date);
-					//TODO: make a way so multiple labels don't overlap: should be done now
 					Label l = new Label(AddPopUpController.timeEntered);
 					l.setPrefSize(50, 50);
 					l.relocate(5, 5+(15*gameTimes.get(date).size()));
@@ -139,10 +138,7 @@ public class Model {
 		}
 		// sorts the games 
 		Collections.sort(gameDays);
-		Collections.sort(gameTimes.get(date));
-		// we will delete this later
-		System.out.println(gameDays.toString());
-	
+		Collections.sort(gameTimes.get(date));	
 		return null;
 	}
 
