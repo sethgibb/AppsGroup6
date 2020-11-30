@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="175.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.popUpController">
+   <children>
+      <TextArea fx:id="textbox" editable="false" layoutX="113.0" layoutY="14.0" prefHeight="92.0" prefWidth="200.0" text="Click Add to Add another game on this date or click Delete to Delete a game on this date." wrapText="true" />
+      <Button fx:id="add" cancelButton="true" layoutX="113.0" layoutY="124.0" mnemonicParsing="false" onAction="#addButton" text="Add" />
+      <Button fx:id="delete" cancelButton="true" layoutX="250.0" layoutY="124.0" mnemonicParsing="false" onAction="#deleteButton" text="Delete" />
+      <Pane prefHeight="176.0" prefWidth="55.0" style="-fx-background-color: orange;" />
+      <Pane layoutX="55.0" prefHeight="176.0" prefWidth="24.0" style="-fx-background-color: black;" />
+   </children>
+</AnchorPane>

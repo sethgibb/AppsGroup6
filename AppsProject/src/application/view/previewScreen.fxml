@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.previewController">
+   <children>
+   <Pane fx:id="Pane2" maxHeight="352.0" maxWidth="500.0" minHeight="352.0" minWidth="500.0" prefHeight="352.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <Pane layoutY="-3.0" prefHeight="359.0" prefWidth="55.0" style="-fx-background-color: orange;" />
+         <Pane layoutX="55.0" layoutY="-5.0" prefHeight="359.0" prefWidth="24.0" style="-fx-background-color: black;" />
+            <TextArea fx:id="gameTxt" layoutX="107.0" layoutY="66.0" prefHeight="222.0" prefWidth="287.0" />
+            <Button fx:id="back" layoutX="107.0" layoutY="307.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
+            <Button fx:id="finish" layoutX="347.0" layoutY="307.0" mnemonicParsing="false" onAction="#finishButton" text="Finish" />
+            <Button fx:id="newTeam" layoutX="214.0" layoutY="307.0" mnemonicParsing="false" onAction="#newButton" text="New Team" />
+            <ImageView fx:id="basketballEndScreen" fitHeight="258.0" fitWidth="91.0" layoutX="402.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../bin/application/basketballEndScreen.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="107.0" layoutY="14.0" prefHeight="36.0" prefWidth="287.0" text="    Team Schedule" textAlignment="CENTER" textFill="#251e01">
+               <font>
+                  <Font name="Playbill" size="48.0" />
+               </font>
+            </Label>
+      </children>
+   </Pane>
+   </children>
+</Pane>
